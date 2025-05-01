@@ -3,15 +3,15 @@ using Gym_Store.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Gym_Store.Pages.Categories
+namespace Gym_Store.Pages.Products
 {
     [BindProperties]
     public class EditModel : PageModel
     {
         private readonly ApplicationDbContext _dbContext;
 
-        // Property to hold the Category object for binding
-        public Product Category { get; set; }
+        // Property to hold the Product object for binding
+        public Product Product { get; set; }
 
         // Constructor to inject the ApplicationDbContext
         public EditModel(ApplicationDbContext dbContext)
@@ -19,23 +19,23 @@ namespace Gym_Store.Pages.Categories
             _dbContext = dbContext;
         }
 
-        // GET method to retrieve the category by ID
+        // GET method to retrieve the product by ID
         public void OnGet(int id)
         {
             if (id != 0)
             {
-                Category = _dbContext.Categories.Find(id);
+                Product = _dbContext.Products.Find(id);
             }
         }
 
-        // POST method to handle category updates
+        // POST method to handle product updates
         public IActionResult OnPost()
         {
             if (ModelState.IsValid)
             {
-                _dbContext.Categories.Update(Category);
+                _dbContext.Products.Update(Product);
                 _dbContext.SaveChanges();
-                TempData["success"] = "Category updated successfully";
+                TempData["success"] = "Product updated successfully";
                 return RedirectToPage("Index");
             }
 

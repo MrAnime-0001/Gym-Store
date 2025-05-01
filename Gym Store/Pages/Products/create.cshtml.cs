@@ -3,14 +3,14 @@ using Gym_Store.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Gym_Store.Pages.Categories
+namespace Gym_Store.Pages.Products
 {
     [BindProperties]
     public class CreateModel : PageModel
     {
         private readonly ApplicationDbContext _db;
 
-        public Product Category { get; set; }
+        public Product Product { get; set; }
 
         public CreateModel(ApplicationDbContext db)
         {
@@ -19,7 +19,7 @@ namespace Gym_Store.Pages.Categories
 
         public void OnGet()
         {
-            Category = new Product();
+            Product = new Product();
         }
 
         public IActionResult OnPost()
@@ -29,10 +29,10 @@ namespace Gym_Store.Pages.Categories
                 return Page();
             }
 
-            _db.Categories.Add(Category);
+            _db.Products.Add(Product);
             _db.SaveChanges();
 
-            TempData["success"] = "Category created successfully";
+            TempData["success"] = "Product created successfully";
             return RedirectToPage("Index");
         }
     }

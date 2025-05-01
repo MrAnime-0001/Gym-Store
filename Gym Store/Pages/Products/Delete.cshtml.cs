@@ -3,15 +3,15 @@ using Gym_Store.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Gym_Store.Pages.Categories
+namespace Gym_Store.Pages.Products
 {
     [BindProperties]
     public class DeleteModel : PageModel
     {
         private readonly ApplicationDbContext _dbContext;
 
-        // Property to hold the Category object for binding
-        public Product Category { get; set; }
+        // Property to hold the Product object for binding
+        public Product Product { get; set; }
 
         // Constructor to inject the ApplicationDbContext
         public DeleteModel(ApplicationDbContext dbContext)
@@ -19,31 +19,32 @@ namespace Gym_Store.Pages.Categories
             _dbContext = dbContext;
         }
 
-        // GET method to retrieve the category by ID for deletion confirmation
+        // GET method to retrieve the product by ID for deletion confirmation
         public void OnGet(int id)
         {
             if (id != 0)
             {
-                Category = _dbContext.Categories.Find(id);
+                Product = _dbContext.Products.Find(id);
             }
         }
 
-        // POST method to handle category deletion
+        // POST method to handle product deletion
         public IActionResult OnPost()
         {
-            // Find the category in the database by its ID
-            var obj = _dbContext.Categories.Find(Category.Id);
+            // Find the product in the database by its ID
+            var obj = _dbContext.Products.Find(Product.Id);
             if (obj == null)
             {
-                // If the category doesn't exist, return NotFound
+                // If the product doesn't exist, return NotFound
                 return NotFound();
             }
 
-            // Remove the category from the database
-            _dbContext.Categories.Remove(obj);
+            // Remove the product from the database
+            _dbContext.Products.Remove(obj);
             _dbContext.SaveChanges();
-            TempData["success"] = "Category deleted successfully";
-            // Redirect to the Category index page after deletion
+
+            TempData["success"] = "Product deleted successfully";
+            // Redirect to the Product index page after deletion
             return RedirectToPage("Index");
         }
     }

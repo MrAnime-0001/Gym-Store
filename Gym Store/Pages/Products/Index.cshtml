@@ -1,0 +1,57 @@
+﻿@page
+@model Gym_Store.Pages.Products.IndexModel
+
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Product List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-page="/Products/Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Create New Product
+            </a>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Product Type</th>
+                <th>Price (NZD)</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.ProductList != null && Model.ProductList.Any())
+            {
+                @foreach (var obj in Model.ProductList.OrderBy(p => p.Name))
+                {
+                    <tr>
+                        <td>@obj.Name</td>
+                        <td>@obj.Type</td>
+                        <td>@obj.Price.ToString("C")</td>
+                        <td>@obj.Quantity</td>
+                        <td>
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-page="/Products/Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
+                                    <i class="bi bi-pencil-square"></i> Edit
+                                </a>
+                                <a asp-page="/Products/Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
+                                    <i class="bi bi-trash-fill"></i> Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5" class="text-center text-danger">No products available</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
