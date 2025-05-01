@@ -11,7 +11,7 @@ namespace Gym_Store.Pages.Categories
         private readonly ApplicationDbContext _dbContext;
 
         // Property to hold the Category object for binding
-        public Category Category { get; set; }
+        public Product Category { get; set; }
 
         // Constructor to inject the ApplicationDbContext
         public EditModel(ApplicationDbContext dbContext)

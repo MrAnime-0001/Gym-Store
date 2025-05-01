@@ -10,7 +10,7 @@ namespace Gym_Store.Pages.Categories
     {
         private readonly ApplicationDbContext _db;
 
-        public Category Category { get; set; }
+        public Product Category { get; set; }
 
         public CreateModel(ApplicationDbContext db)
         {
@@ -19,7 +19,7 @@ namespace Gym_Store.Pages.Categories
 
         public void OnGet()
         {
-            Category = new Category();
+            Category = new Product();
         }
 
         public IActionResult OnPost()
