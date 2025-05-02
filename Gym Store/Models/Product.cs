@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
-using Microsoft.EntityFrameworkCore;
 
 namespace Gym_Store.Models
 {
@@ -27,8 +26,10 @@ namespace Gym_Store.Models
         [Required]
         public string Quantity { get; set; }
 
+        [Required(ErrorMessage = "An image URL is required")]
         [DisplayName("Image URL")]
-        [Url(ErrorMessage = "Please enter a valid URL")]
-        public string? ImageUrl { get; set; }
+        [RegularExpression(@"^/Gym_Store/Images/.+\.(jpg|jpeg|png|gif)$",
+            ErrorMessage = "URL must start with '/Gym_Store/Images/' and end in .jpg/.png/.gif")]
+        public string ImageUrl { get; set; }
     }
 }

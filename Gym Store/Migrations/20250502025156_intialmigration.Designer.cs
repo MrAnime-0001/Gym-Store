@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gym_Store.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250502015425_intialmigration")]
+    [Migration("20250502025156_intialmigration")]
     partial class intialmigration
     {
         /// <inheritdoc />
@@ -33,6 +33,7 @@ namespace Gym_Store.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ImageUrl")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -60,7 +61,8 @@ namespace Gym_Store.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Optimum Nutrition Gold Standard 100% Whey",
+                            ImageUrl = "/Gym_Store/Images/Optimum Nutrition Gold Standard 100% Whey.jpg",
+                            Name = "Optimum Nutrition Gold Standard 100% Whey French Vanilla",
                             Price = 98.95m,
                             Quantity = "2.27 kg",
                             Type = "Protein Powder"
@@ -68,6 +70,7 @@ namespace Gym_Store.Migrations
                         new
                         {
                             Id = 2,
+                            ImageUrl = "/Gym_Store/Images/Myprotein Impact Whey Isolate.jpg",
                             Name = "Myprotein Impact Whey Isolate",
                             Price = 70.50m,
                             Quantity = "1 kg",
@@ -76,6 +79,7 @@ namespace Gym_Store.Migrations
                         new
                         {
                             Id = 3,
+                            ImageUrl = "/Gym_Store/Images/INC Creatine Monohydrate.jpg",
                             Name = "INC Creatine Monohydrate",
                             Price = 39.95m,
                             Quantity = "500 g",
@@ -84,7 +88,8 @@ namespace Gym_Store.Migrations
                         new
                         {
                             Id = 4,
-                            Name = "EHP Labs Pride Pre-Workout",
+                            ImageUrl = "/Gym_Store/Images/EHP Labs Pride Pre-Workout Blue Slushie.jpg",
+                            Name = "EHP Labs Pride Pre-Workout Blue Slushie",
                             Price = 79.95m,
                             Quantity = "40 Serves",
                             Type = "Pre-Workout"
@@ -92,14 +97,34 @@ namespace Gym_Store.Migrations
                         new
                         {
                             Id = 5,
-                            Name = "Optimum Nutrition Gold Standard Pre-Workout",
+                            ImageUrl = "/Gym_Store/Images/EHP Labs Pride Pre-Workout Raspberry Twizzle.jpg",
+                            Name = "EHP Labs Pride Pre-Workout Raspberry Twizzle",
+                            Price = 79.95m,
+                            Quantity = "40 Serves",
+                            Type = "Pre-Workout"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ImageUrl = "/Gym_Store/Images/Optimum Nutrition Gold Standard Pre-Workout Green Apple.jpg",
+                            Name = "Optimum Nutrition Gold Standard Pre-Workout Green Apple",
                             Price = 39.90m,
                             Quantity = "30 Serves",
                             Type = "Pre-Workout"
                         },
                         new
                         {
-                            Id = 6,
+                            Id = 7,
+                            ImageUrl = "/Gym_Store/Images/Optimum Nutrition Gold Standard Pre-Workout Blueberry Lemonade.jpg",
+                            Name = "Optimum Nutrition Gold Standard Pre-Workout Blueberry Lemonade",
+                            Price = 39.90m,
+                            Quantity = "30 Serves",
+                            Type = "Pre-Workout"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ImageUrl = "/Gym_Store/Images/Musashi Pre-Workout Purple Grape.jpg",
                             Name = "Musashi Pre-Workout Purple Grape",
                             Price = 29.99m,
                             Quantity = "225 g",
