@@ -11,7 +11,13 @@
     {
         <div class="col-md-4 mb-4">
             <div class="card h-100 shadow-sm">
-                <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name" style="object-fit: cover; height: 200px;">
+                <!-- Container to keep cards uniform -->
+                <div style="height: 200px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                    <img src="@product.ImageUrl"
+                         alt="@product.Name"
+                         class="img-fluid"
+                         style="max-height: 100%; max-width: 100%; object-fit: contain;" />
+                </div>
                 <div class="card-body">
                     <h5 class="card-title">@product.Name</h5>
                     <p class="card-text">
