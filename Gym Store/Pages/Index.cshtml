@@ -1,66 +1,36 @@
 ﻿@page
-@model Gym_Store.Pages.Products.IndexModel
+@model Gym_Store.Pages.IndexModel
 @{
-    ViewData["Title"] = "Product List";
+    ViewData["Title"] = "Home - Gym_Store";
 }
 
-<div class="container my-4">
-    <div class="row mb-3">
-        <div class="col">
-            <h2 class="text-primary">Product List</h2>
-        </div>
-        <div class="col text-end">
-            <a asp-page="/Products/Create" class="btn btn-success">
-                <i class="bi bi-plus-circle"></i> New Product
-            </a>
-        </div>
-    </div>
+<h1 class="text-primary text-center mb-4">Our Products</h1>
 
-    <div class="row">
-        @if (Model.ProductList != null && Model.ProductList.Any())
-        {
-            @foreach (var p in Model.ProductList)
-            {
-                <div class="col-12 col-sm-6 col-md-4 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <img src="@(p.ImageUrl ?? "/images/placeholder.png")"
-                             class="card-img-top"
-                             alt="@p.Name"
-                             style="object-fit:cover; height:200px;" />
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">@p.Name</h5>
-                            <p class="card-text mb-1">
-                                <strong>Price:</strong> @p.Price.ToString("C")<br />
-                                <strong>Quantity:</strong> @p.Quantity
-                            </p>
-                            <button type="button"
-                                    class="btn btn-success mt-auto purchase-btn"
-                                    data-product="@p.Name">
-                                Purchase Product
-                            </button>
-                        </div>
-                    </div>
+<div class="row">
+    @foreach (var product in Model.ProductList)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name" style="object-fit: cover; height: 200px;">
+                <div class="card-body">
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="card-text">
+                        <strong>Price:</strong> $@product.Price <br />
+                        <strong>Quantity:</strong> @product.Quantity
+                    </p>
                 </div>
-            }
-        }
-        else
-        {
-            <div class="col">
-                <div class="alert alert-warning">
-                    No products available.
+                <div class="card-footer text-center">
+                    <button class="btn btn-success" onclick="showPurchaseAlert('@product.Name')">Purchase</button>
                 </div>
             </div>
-        }
-    </div>
+        </div>
+    }
 </div>
 
 @section Scripts {
     <script>
-        document.querySelectorAll('.purchase-btn').forEach(btn => {
-            btn.addEventListener('click', e => {
-                var productName = e.currentTarget.getAttribute('data-product');
-                alert(`Thank you for “purchasing” ${productName}! This is just a demo.`);
-            });
-        });
+        function showPurchaseAlert(productName) {
+            toastr.success(`Pretend purchased "${productName}"!`);
+        }
     </script>
 }

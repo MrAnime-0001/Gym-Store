@@ -1,6 +1,8 @@
 using Gym_Store.Data;
 using Gym_Store.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Gym_Store.Pages.Products
 {

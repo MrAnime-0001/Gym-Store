@@ -17,11 +17,13 @@ namespace Gym_Store.Pages.Products
             _db = db;
         }
 
+        // GET method to render the create page
         public void OnGet()
         {
             Product = new Product();
         }
 
+        // POST method to create a new product
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
@@ -32,7 +34,7 @@ namespace Gym_Store.Pages.Products
             _db.Products.Add(Product);
             _db.SaveChanges();
 
-            TempData["success"] = "Product created successfully";
+            TempData["success"] = "Product created successfully!";
             return RedirectToPage("Index");
         }
     }

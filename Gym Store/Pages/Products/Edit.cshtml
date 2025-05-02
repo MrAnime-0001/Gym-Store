@@ -10,28 +10,39 @@
             <hr />
         </div>
 
+        <!-- Product Name -->
         <div class="mb-3 row p-1">
-            <label asp-for="Product.Name" class="p-0"></label>
+            <label asp-for="Product.Name" class="col-form-label p-0"></label>
             <input asp-for="Product.Name" class="form-control" />
             <span asp-validation-for="Product.Name" class="text-danger"></span>
         </div>
 
+        <!-- Product Type -->
         <div class="mb-3 row p-1">
-            <label asp-for="Product.Type" class="p-0"></label>
+            <label asp-for="Product.Type" class="col-form-label p-0"></label>
             <input asp-for="Product.Type" class="form-control" />
             <span asp-validation-for="Product.Type" class="text-danger"></span>
         </div>
 
+        <!-- Product Price -->
         <div class="mb-3 row p-1">
-            <label asp-for="Product.Price" class="p-0"></label>
+            <label asp-for="Product.Price" class="col-form-label p-0"></label>
             <input asp-for="Product.Price" class="form-control" />
             <span asp-validation-for="Product.Price" class="text-danger"></span>
         </div>
 
+        <!-- Product Quantity -->
         <div class="mb-3 row p-1">
-            <label asp-for="Product.Quantity" class="p-0"></label>
+            <label asp-for="Product.Quantity" class="col-form-label p-0"></label>
             <input asp-for="Product.Quantity" class="form-control" />
             <span asp-validation-for="Product.Quantity" class="text-danger"></span>
+        </div>
+
+        <!-- Product Image URL -->
+        <div class="mb-3 row p-1">
+            <label asp-for="Product.ImageUrl" class="col-form-label p-0"></label>
+            <input asp-for="Product.ImageUrl" class="form-control" />
+            <span asp-validation-for="Product.ImageUrl" class="text-danger"></span>
         </div>
 
         <div class="row">

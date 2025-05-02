@@ -1,19 +1,24 @@
-using Microsoft.AspNetCore.Mvc;
+using Gym_Store.Data;
+using Gym_Store.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections.Generic;
 
-namespace Gym_Store.Pages;
-
-public class IndexModel : PageModel
+namespace Gym_Store.Pages
 {
-    private readonly ILogger<IndexModel> _logger;
-
-    public IndexModel(ILogger<IndexModel> logger)
+    public class IndexModel : PageModel
     {
-        _logger = logger;
-    }
+        private readonly ApplicationDbContext _dbContext;
 
-    public void OnGet()
-    {
+        public List<Product> ProductList { get; set; }
 
+        public IndexModel(ApplicationDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public void OnGet()
+        {
+            ProductList = _dbContext.Products.ToList();
+        }
     }
 }

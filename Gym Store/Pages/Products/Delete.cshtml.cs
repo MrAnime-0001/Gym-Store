@@ -10,41 +10,37 @@ namespace Gym_Store.Pages.Products
     {
         private readonly ApplicationDbContext _dbContext;
 
-        // Property to hold the Product object for binding
         public Product Product { get; set; }
 
-        // Constructor to inject the ApplicationDbContext
         public DeleteModel(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        // GET method to retrieve the product by ID for deletion confirmation
-        public void OnGet(int id)
+        // GET: Load the product to confirm deletion
+        public IActionResult OnGet(int id)
         {
-            if (id != 0)
+            Product = _dbContext.Products.Find(id);
+            if (Product == null)
             {
-                Product = _dbContext.Products.Find(id);
+                return NotFound();
             }
+            return Page();
         }
 
-        // POST method to handle product deletion
+        // POST: Delete the product
         public IActionResult OnPost()
         {
-            // Find the product in the database by its ID
-            var obj = _dbContext.Products.Find(Product.Id);
-            if (obj == null)
+            var productInDb = _dbContext.Products.Find(Product.Id);
+            if (productInDb == null)
             {
-                // If the product doesn't exist, return NotFound
                 return NotFound();
             }
 
-            // Remove the product from the database
-            _dbContext.Products.Remove(obj);
+            _dbContext.Products.Remove(productInDb);
             _dbContext.SaveChanges();
 
-            TempData["success"] = "Product deleted successfully";
-            // Redirect to the Product index page after deletion
+            TempData["success"] = "Product deleted successfully!";
             return RedirectToPage("Index");
         }
     }

@@ -10,35 +10,34 @@ namespace Gym_Store.Pages.Products
     {
         private readonly ApplicationDbContext _dbContext;
 
-        // Property to hold the Product object for binding
         public Product Product { get; set; }
 
-        // Constructor to inject the ApplicationDbContext
         public EditModel(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        // GET method to retrieve the product by ID
-        public void OnGet(int id)
+        // GET: Load the product for editing
+        public IActionResult OnGet(int id)
         {
-            if (id != 0)
+            Product = _dbContext.Products.Find(id);
+            if (Product == null)
             {
-                Product = _dbContext.Products.Find(id);
+                return NotFound();
             }
+            return Page();
         }
 
-        // POST method to handle product updates
+        // POST: Update the product in the database
         public IActionResult OnPost()
         {
             if (ModelState.IsValid)
             {
                 _dbContext.Products.Update(Product);
                 _dbContext.SaveChanges();
-                TempData["success"] = "Product updated successfully";
+                TempData["success"] = "Product updated successfully!";
                 return RedirectToPage("Index");
             }
-
             return Page();
         }
     }

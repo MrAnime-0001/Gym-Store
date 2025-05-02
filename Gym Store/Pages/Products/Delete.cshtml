@@ -2,7 +2,7 @@
 @model Gym_Store.Pages.Products.DeleteModel
 
 <form method="post">
-    <input asp-for="Product.Id" hidden />
+    <input asp-for="Product.Id" type="hidden" />
 
     <div class="border p-3 mt-4">
         <div class="row pb-2">
@@ -10,24 +10,28 @@
             <hr />
         </div>
 
+        <!-- Product Name -->
         <div class="mb-3 row p-1">
-            <label asp-for="Product.Name" class="p-0"></label>
-            <input asp-for="Product.Name" disabled class="form-control" />
+            <label asp-for="Product.Name" class="col-form-label p-0"></label>
+            <input asp-for="Product.Name" class="form-control" disabled />
         </div>
 
+        <!-- Product Type -->
         <div class="mb-3 row p-1">
-            <label asp-for="Product.Type" class="p-0"></label>
-            <input asp-for="Product.Type" disabled class="form-control" />
+            <label asp-for="Product.Type" class="col-form-label p-0"></label>
+            <input asp-for="Product.Type" class="form-control" disabled />
         </div>
 
+        <!-- Product Price -->
         <div class="mb-3 row p-1">
-            <label asp-for="Product.Price" class="p-0"></label>
-            <input asp-for="Product.Price" disabled class="form-control" />
+            <label asp-for="Product.Price" class="col-form-label p-0"></label>
+            <input asp-for="Product.Price" class="form-control" disabled />
         </div>
 
+        <!-- Product Quantity -->
         <div class="mb-3 row p-1">
-            <label asp-for="Product.Quantity" class="p-0"></label>
-            <input asp-for="Product.Quantity" disabled class="form-control" />
+            <label asp-for="Product.Quantity" class="col-form-label p-0"></label>
+            <input asp-for="Product.Quantity" class="form-control" disabled />
         </div>
 
         <div class="row">
