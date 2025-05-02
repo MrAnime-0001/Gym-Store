@@ -4,55 +4,53 @@
 <form method="post">
     <input asp-for="Product.Id" hidden />
 
-    <div class="border p-3 mt-4">
+    <div class="border p-4 mt-4 bg-light">
         <div class="row pb-2">
-            <h2 class="text-primary">Edit Product</h2>
+            <h2 class="text-custom py-2">Edit Product</h2>
             <hr />
         </div>
 
         <!-- Product Name -->
-        <div class="mb-3 row p-1">
-            <label asp-for="Product.Name" class="col-form-label p-0"></label>
-            <input asp-for="Product.Name" class="form-control" />
+        <div class="mb-3 row">
+            <label asp-for="Product.Name" class="col-form-label"></label>
+            <input asp-for="Product.Name" class="form-control custom-input" />
             <span asp-validation-for="Product.Name" class="text-danger"></span>
         </div>
 
         <!-- Product Type -->
-        <div class="mb-3 row p-1">
-            <label asp-for="Product.Type" class="col-form-label p-0"></label>
-            <input asp-for="Product.Type" class="form-control" />
+        <div class="mb-3 row">
+            <label asp-for="Product.Type" class="col-form-label"></label>
+            <input asp-for="Product.Type" class="form-control custom-input" />
             <span asp-validation-for="Product.Type" class="text-danger"></span>
         </div>
 
         <!-- Product Price -->
-        <div class="mb-3 row p-1">
-            <label asp-for="Product.Price" class="col-form-label p-0"></label>
-            <input asp-for="Product.Price" class="form-control" />
+        <div class="mb-3 row">
+            <label asp-for="Product.Price" class="col-form-label"></label>
+            <input asp-for="Product.Price" class="form-control custom-input" />
             <span asp-validation-for="Product.Price" class="text-danger"></span>
         </div>
 
         <!-- Product Quantity -->
-        <div class="mb-3 row p-1">
-            <label asp-for="Product.Quantity" class="col-form-label p-0"></label>
-            <input asp-for="Product.Quantity" class="form-control" />
+        <div class="mb-3 row">
+            <label asp-for="Product.Quantity" class="col-form-label"></label>
+            <input asp-for="Product.Quantity" class="form-control custom-input" />
             <span asp-validation-for="Product.Quantity" class="text-danger"></span>
         </div>
 
         <!-- Product Image URL -->
-        <div class="mb-3 row p-1">
-            <label asp-for="Product.ImageUrl" class="col-form-label p-0"></label>
-            <input asp-for="Product.ImageUrl" class="form-control" />
+        <div class="mb-3 row">
+            <label asp-for="Product.ImageUrl" class="col-form-label"></label>
+            <input asp-for="Product.ImageUrl" class="form-control custom-input" />
             <span asp-validation-for="Product.ImageUrl" class="text-danger"></span>
         </div>
 
         <div class="row">
-            <div class="col-6 col-md-3">
-                <button type="submit" class="btn btn-primary form-control">Update</button>
+            <div class="col-6 col-md-3 mb-2">
+                <button type="submit" class="btn btn-custom form-control">Update</button>
             </div>
-            <div class="col-6 col-md-3">
-                <a asp-page="/Products/Index" class="btn btn-secondary border form-control">
-                    Back to List
-                </a>
+            <div class="col-6 col-md-3 mb-2">
+                <a asp-page="/Products/Index" class="btn btn-secondary form-control">Back to List</a>
             </div>
         </div>
     </div>
@@ -61,3 +59,41 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+
+<style>
+    /* Form background color */
+    .bg-light {
+        background-color: #fff8e1;
+    }
+
+    /* Section title color */
+    h2.text-custom {
+        color: #ff7043;
+    }
+
+    /* Input fields styling */
+    .custom-input {
+        border-radius: 20px;
+        border: 1px solid #ff7043;
+        padding: 0.75rem;
+        background-color: #f1f1f1;
+    }
+
+    /* Validation error color */
+    .text-danger {
+        color: #e57373;
+    }
+
+    /* Update button matches custom button styling */
+    .btn-custom {
+        background-color: #ff7043;
+        border-color: #ff7043;
+        border-radius: 20px;
+        color: white;
+    }
+
+    .btn-custom:hover {
+        background-color: #f4511e;
+        border-color: #f4511e;
+    }
+</style>

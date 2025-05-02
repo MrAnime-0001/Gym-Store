@@ -8,14 +8,14 @@
         </div>
         <div class="col-6 text-end">
             <!-- Create button linking to the Create page -->
-            <a asp-page="/Products/Create" class="btn btn-primary">
+            <a asp-page="/Products/Create" class="btn btn-custom">
                 <i class="bi bi-plus-circle"></i> Create New Product
             </a>
         </div>
     </div>
 
     <table class="table table-bordered table-striped mt-3">
-        <thead>
+        <thead class="thead-custom">
             <tr>
                 <th>Product Name</th>
                 <th>Product Type</th>
@@ -56,3 +56,47 @@
         </tbody>
     </table>
 </div>
+
+<style>
+    /* Body background */
+    body {
+        background: linear-gradient(to right, #e0f7fa, #b2ebf2);
+    }
+
+    /* Button Custom Styling */
+    .btn-custom {
+        background-color: #ff7043;
+        border-color: #ff7043;
+        border-radius: 20px;
+        padding: 0.5rem 1.5rem;
+        color: white;
+    }
+
+    .btn-custom:hover {
+        background-color: #f4511e;
+        border-color: #f4511e;
+    }
+
+    /* Table header background */
+    .thead-custom {
+        background-color: #ffe0b2;
+        color: #3e2723;
+    }
+
+    /* Table rows */
+    table.table-bordered {
+        border-color: #ff7043;
+    }
+
+    table.table-bordered th, table.table-bordered td {
+        border-color: #ff7043;
+    }
+
+    table.table-striped tbody tr:nth-child(odd) {
+        background-color: #fff3e0;
+    }
+
+    table.table-striped tbody tr:nth-child(even) {
+        background-color: #ffecb3;
+    }
+</style>
