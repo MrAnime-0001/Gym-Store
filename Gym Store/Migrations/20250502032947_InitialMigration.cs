@@ -7,7 +7,7 @@
 namespace Gym_Store.Migrations
 {
     /// <inheritdoc />
-    public partial class intialmigration : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

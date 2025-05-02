@@ -8,6 +8,47 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Gym_Store.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+
+    <style>
+        /* Navbar background gradient */
+        .navbar {
+            background: linear-gradient(to right, #006064, #ff7043); /* Cyan to Orange gradient */
+        }
+
+        /* Centering nav items */
+        .navbar-nav {
+            flex-direction: row;
+            justify-content: center; /* Center navbar links */
+            width: 100%;
+        }
+
+        .navbar-nav .nav-item {
+            padding: 0 15px; /* Padding between links */
+        }
+
+        /* Style for navbar links */
+        .nav-link {
+            font-weight: bold;
+            color: white !important;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ff7043 !important; /* Hover effect: orange color */
+            background-color: rgba(255, 255, 255, 0.2); /* Light transparent background */
+        }
+
+        /* Navbar brand (logo) */
+        .navbar-brand {
+            color: white !important;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar-toggler-icon {
+            background-color: white !important; /* Make the toggle icon white */
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -19,7 +60,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
