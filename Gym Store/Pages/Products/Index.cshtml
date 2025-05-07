@@ -17,9 +17,10 @@
     <table class="table table-bordered table-striped mt-3">
         <thead class="thead-custom">
             <tr>
-                <th>Product Name</th>
-                <th>Product Type</th>
-                <th>Price (NZD)</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Price</th>
                 <th>Quantity</th>
                 <th>Actions</th>
             </tr>
@@ -30,10 +31,17 @@
                 @foreach (var obj in Model.ProductList.OrderBy(p => p.Name))
                 {
                     <tr>
+                        <td>
+                            @if (!string.IsNullOrEmpty(obj.ImageUrl))
+                            {
+                                <img src="@obj.ImageUrl" alt="Product Image" width="60" height="60" style="object-fit:cover; border-radius:8px;" />
+                            }
+                        </td>
                         <td>@obj.Name</td>
                         <td>@obj.Type</td>
                         <td>@obj.Price.ToString("C")</td>
                         <td>@obj.Quantity</td>
+
                         <td>
                             <div class="btn-group" role="group">
                                 <a asp-page="/Products/Edit" asp-route-id="@obj.Id" class="btn btn-sm btn-warning">
