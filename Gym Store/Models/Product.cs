@@ -26,10 +26,7 @@ namespace Gym_Store.Models
         [Required]
         public string Quantity { get; set; }
 
-        [Required(ErrorMessage = "An image URL is required")]
         [DisplayName("Image URL")]
-        [RegularExpression(@"^/Gym_Store/Images/.+\.(jpg|jpeg|png|gif)$",
-            ErrorMessage = "URL must start with '/Gym_Store/Images/' and end in .jpg/.png/.gif")]
-        public string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
     }
 }

@@ -9,30 +9,50 @@ namespace Gym_Store.Pages.Products
     public class CreateModel : PageModel
     {
         private readonly ApplicationDbContext _db;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
         public Product Product { get; set; }
 
-        public CreateModel(ApplicationDbContext db)
+        public CreateModel(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment)
         {
             _db = db;
+            _webHostEnvironment = webHostEnvironment;
         }
 
-        // GET method to render the create page
         public void OnGet()
         {
             Product = new Product();
         }
 
-        // POST method to create a new product
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPostAsync(IFormFile? imageFile)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
+            if (imageFile != null && imageFile.Length > 0)
+            {
+                var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Gym_Store", "Images");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                var fileName = Path.GetFileName(imageFile.FileName);
+                var filePath = Path.Combine(uploadsFolder, fileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(stream);
+                }
+
+                Product.ImageUrl = $"/Gym_Store/Images/{fileName}";
+            }
+
             _db.Products.Add(Product);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
 
             TempData["success"] = "Product created successfully!";
             return RedirectToPage("Index");
