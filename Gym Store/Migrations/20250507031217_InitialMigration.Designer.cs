@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gym_Store.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250507024247_InitialMigration")]
+    [Migration("20250507031217_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
