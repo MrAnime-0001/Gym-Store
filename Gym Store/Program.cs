@@ -1,5 +1,6 @@
 using Gym_Store.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace Gym_Store
 {
@@ -12,6 +13,9 @@ namespace Gym_Store
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<ApplicationDbContext>();
 
             var app = builder.Build();
 
